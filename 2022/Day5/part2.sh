@@ -28,12 +28,14 @@ cat instructions.txt | while read i; do
     from=$(echo $i | awk '{print $4}')
     to=$(echo $i | awk '{print $6}')
     current=1
+    > holdingArea
     while [ $current -le $howMany ]; do
         last=`tail -n1 stack$from`
-        echo $last >> stack$to
+        echo $last >> holdingArea
         sed -i '' -e '$ d' stack$from
         current=$(expr $current + 1 )
     done
+    tac holdingArea >> stack$to
 done
 
 for i in {1..9}; do
