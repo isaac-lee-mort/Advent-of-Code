@@ -18,7 +18,7 @@ stack9="W Q N J F M L "
 
 
 for i in {1..9}; do
-    ## Bottom of line is top of stack
+    ## Bottom of file is top of stack
     stack="stack${i}"
     echo ${!stack} | tr " " "\n" > stack$i
 done
